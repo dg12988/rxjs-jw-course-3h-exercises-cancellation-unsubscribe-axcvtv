@@ -1,8 +1,10 @@
 import { observable, Observable } from 'rxjs';
 
-const observable$ = new Observable<string>(subscriber => {
+const observable$ = new Observable<number>(subscriber => {
+  let counter = 1;
+  
   setInterval(() => {
-    subscriber.next('next interval');
+    subscriber.next(counter++);
   }, 1000);
 });
 

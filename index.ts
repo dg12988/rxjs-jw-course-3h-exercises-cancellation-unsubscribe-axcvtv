@@ -12,4 +12,7 @@ const subscription = observable$.subscribe({
   complete: () => console.log('Completed')
 });
 
-setTimeout(() => subscription.unsubscribe(), 7000);
+setTimeout(() => {
+  subscription.unsubscribe();
+  console.log('Unsubbed');
+}, 7000);

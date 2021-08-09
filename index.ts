@@ -3,9 +3,14 @@ import { observable, Observable } from 'rxjs';
 const observable$ = new Observable<number>(subscriber => {
   let counter = 1;
   
-  setInterval(() => {
+ const intervalID = setInterval(() => {
+    console.log('Emitted', counter);
     subscriber.next(counter++);
   }, 1000);
+
+  return () => {
+    clearInterval(intervalID);
+  }
 });
 
 const subscription = observable$.subscribe({
